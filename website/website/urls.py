@@ -22,5 +22,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', user_views.Home.as_view(), name='home'),
     path('',include("django.contrib.auth.urls")),
-    path('video_feed/', user_views.video_feed, name='video_feed'),
 ]
