@@ -1,11 +1,18 @@
 {% extends "base.html" %}
-{% block content %}
-<div class="jumbotron">
-  <div class="container">
-    <h1 class="display-4">Security System</h1>
-    <img src="http://192.168.0.109:5000/video_feed" width="640" height="480" alt="Live Stream">
-    <p>hi</p>
+{% load static %}
 
+{% block content %}
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-4">Security System</h1>
+      <img src="http://192.168.0.109:5000/video_feed" width="640" height="480" alt="Live Stream">
+      <p>hi</p>
+
+    </div>
   </div>
-</div>
+
+  <img src="{% static 'images/logo.png' %}" alt="Logo">
+  <img src="{% static 'images/landingImage.png' %}" alt="Logo">
+  <img src="{% static 'images/LiveCamera.png' %}" alt="Logo">
+
 {%endblock content%}

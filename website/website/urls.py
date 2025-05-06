@@ -23,4 +23,5 @@ urlpatterns = [
     path('', user_views.Home.as_view(), name='home'),
     path('',include("django.contrib.auth.urls")),
     path("motion/", user_views.motion_status),
+    path('live', user_views.live_page, name='live'),
 ]

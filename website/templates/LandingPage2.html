@@ -1,0 +1,191 @@
+{% extends "base2.html" %}
+{% load static %}
+<title>{% block title %}Get Smarter Security With Notify{% endblock %}</title>
+{% block header %}
+    <header>
+        <nav class="fixed top-0 left-0 w-full z-50 mx-auto px-2 flex text-black items-center justify-between shadow-2xl bg-white h-16">
+            {# Left Section #}
+            <div class="flex items-center p-2 h-16">
+                <div class="flex items-center">
+                    <a href="{% url 'home' %}">
+                        <img src="{% static 'images/logo.png' %}" alt="Landing Image" >
+                             class="object-cover ml-2 h-14">
+                    </a>
+                    <a href="{% url 'landing' %}" class="text-4xl font-bold relative ml-4 mb-2">
+                        Notify
+                        <span class="absolute left-1 bottom-[-3px] w-[75%] h-1 bg-blue-400 rounded-lg"></span>
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-2 text-sm font-semibold p-2 ml-28">
+                    {# Product Dropdown #}
+                    <div class="relative group">
+                        <a href="#" class="px-6 py-3 flex items-center">
+                            Product
+                            <i class="fa-solid fa-caret-down ml-2 mt-1 transition-transform duration-200 group-hover:rotate-180"></i>
+                        </a>
+                        <div class="fixed left-0 right-0 top-16 z-50 bg-white shadow-lg py-4 invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200">
+                            <div class="container mx-auto px-4 flex justify-center space-x-8">
+                                <a href="{% url "page_not_found" %}" class="hover:text-blue-500 px-6 py-3">All
+                                    Products</a>
+                                <a href="{% url "page_not_found" %}" class="hover:text-blue-500 px-6 py-3">Cameras</a>
+                                <a href="{% url "page_not_found" %}" class="hover:text-blue-500 px-6 py-3">Sensors</a>
+                                <a href="{% url "page_not_found" %}" class="hover:text-blue-500 px-6 py-3">Accessories</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    {# What You Will See Dropdown #}
+                    <div class="relative group">
+                        <a href="#" class="px-6 py-3 flex items-center">
+                            What You Will See
+                            <i class="fa-solid fa-caret-down ml-2 mt-1 transition-transform duration-200 group-hover:rotate-180"></i>
+                        </a>
+                        <div class="fixed left-0 right-0 top-16 z-50 w-screen bg-white shadow-lg py-4 invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200 border-t border-gray-100">
+                            <div class="container mx-auto px-4 flex justify-center space-x-8">
+                                <a href="{% url "live" %}" class="hover:text-blue-500 px-6 py-3">Live Feed</a>
+                                <a href="#" class="hover:text-blue-500 px-6 py-3">Features</a>
+                                <a href="#" class="hover:text-blue-500 px-6 py-3">Case Studies</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    {# Help Dropdown #}
+                    <div class="relative group">
+                        <a href="#" class="px-6 py-3 flex items-center">
+                            Help
+                            <i class="fa-solid fa-caret-down ml-2 mt-1 transition-transform duration-200 group-hover:rotate-180"></i>
+                        </a>
+                        <div class="fixed left-0 right-0 top-16 z-50 w-screen bg-white shadow-lg py-4 invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200 border-t border-gray-100">
+                            <div class="container mx-auto px-4 flex justify-center space-x-8">
+                                <a href="#" class="hover:text-blue-500 px-6 py-3">Support</a>
+                                <a href="#" class="hover:text-blue-500 px-6 py-3">FAQ</a>
+                                <a href="#" class="hover:text-blue-500 px-6 py-3">Contact</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#" class="text-blue-500 px-6 py-3">Offers</a>
+                </div>
+            </div>
+
+            {# Right Section #}
+            <div class="flex items-center text-black text-sm mr-5 space-x-8 font-semibold p-2">
+                {% if user.is_authenticated %}
+                    <div class="flex items-center space-x-2">
+                        {# Profile Logo: FontAwesome Icon #}
+                        <i class="fa-solid fa-user-circle fa-2x"></i>  <!-- Profile icon (FontAwesome) -->
+                        <span class="p-1">{{ user.username }}</span>  <!-- Display username if logged in -->
+                    </div>
+                    <form action="{% url 'logout' %}" method="post" class="inline">
+                        {% csrf_token %}
+                        <button type="submit" class="p-1">Sign Out</button>
+                    </form>
+                {% else %}
+                    <a href="{% url 'login' %}" class="p-1">Sign In</a>  <!-- Show Sign In if not logged in -->
+                {% endif %}
+
+                <div class="flex items-center space-x-2 p-2">
+                    <span class="p-1">
+                        <i class="fa-solid fa-location-dot fa-xl"></i>
+                    </span>
+                    <a href="#" class="p-1 inline-flex flex-col text-left max-w-fit">
+                        <span>United</span>
+                        <span>Kingdom</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+{% endblock %}
+{% block content %}
+    <main class="bg-white pt-16">
+        {# Hero Section #}
+        <section class="relative w-full bg-red-100">
+            <div class="w-screen h-96 bg-green-200">
+                <img <img src="{% static 'images/landingImage.png' %}" alt="Logo">
+                     alt="Outdoor Camera Plus"
+                     class="w-full h-full object-cover transform -scale-x-100">
+            </div>
+
+            {# Text Overlay #}
+            <div class="absolute top-0 left-0 w-full h-full bg-blue-100/30">
+                <div class="container mx-auto px-4 h-full flex items-center">
+                    <div class="p-8 max-w-xl backdrop-blur-sm bg-white bg-opacity-20 rounded-xl">
+                        <h1 class="text-4xl md:text-5xl text-black font-semibold mb-6">
+                            Notify Multi-purpose Sensor Detector
+                        </h1>
+                        <p class="text-xl text-gray-600 mb-8">
+                            Unified Security, from residence to business
+                        </p>
+                        <a href="#" class="inline-block bg-blue-500 text-white px-8 py-2 rounded-2xl
+                                  hover:bg-blue-600 transition-colors duration-200
+                                  text-lg">
+                            Get Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {# Overview Section #}
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-black">
+                    Overview
+                </h2>
+                <div class="max-w-5xl mx-auto">
+                    <p class=" text-gray-600 leading-relaxed">
+                        Notify's comprehensive security solutions provide seamless protection
+                        for both residential and commercial properties through advanced
+                        <strong class="text-black">multi-sensor technology</strong> including
+                        <strong class="text-black">infrared detection</strong>,
+                        <strong class="text-black">motion sensing</strong>, and
+                        <strong class="text-black">smoke analysis</strong>. Our system offers
+                        <strong class="text-black">24/7 monitoring</strong> with
+                        <strong class="text-black">real-time alerts</strong>
+                        for complete peace of mind.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        {# Core Benefits Section #}
+        <section class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-black mb-12 text-center">
+                    Core Benefits
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center text-black h-96">
+                    {# Remote Management #}
+                    <div class="bg-white p-6 flex flex-col items-center justify-center">
+                        <i class="fa-solid fa-house-laptop mb-6 fa-6x"></i>
+                        <h3 class="text-lg font-bold mb-4">Remote Management</h3>
+                        <p class="text-gray-600 font-light">Anytime and anywhere</p>
+                    </div>
+
+                    {# Notifications #}
+                    <div class="bg-white p-6 flex flex-col items-center justify-center">
+                        <i class="fa-solid fa-bell mb-6 fa-6x"></i>
+                        <h3 class="text-lg font-bold mb-4">Notifications and Alerts</h3>
+                        <p class="text-gray-600 font-light">Accurate and timely</p>
+                    </div>
+
+                    {# Easy to Use #}
+                    <div class="bg-white p-6 flex flex-col items-center justify-center">
+                        <i class="fa-solid fa-thumbs-up mb-6 fa-6x"></i>
+                        <h3 class="text-xl font-bold mb-4">Easy-to-use</h3>
+                        <p class="text-gray-600 font-light">Devices control via touches</p>
+                    </div>
+
+                    {# High Security #}
+                    <div class="bg-white p-6 flex flex-col items-center justify-center">
+                        <i class="fa-solid fa-shield-halved mb-6 fa-6x"></i>
+                        <h3 class="text-xl font-bold mb-4">High Security</h3>
+                        <p class="text-gray-600 font-light">Stay secure</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

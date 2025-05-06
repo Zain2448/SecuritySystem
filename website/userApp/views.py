@@ -16,3 +16,7 @@ def motion_status(request):
         return HttpResponse(f"Motion status: {status}")
     except FileNotFoundError:
         return HttpResponse("No motion data found.")
+
+
+def live_page(request):
+    return render(request, 'live.html')

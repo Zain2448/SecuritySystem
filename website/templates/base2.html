@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth h-full">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.8.0/dist/tailwind.min.css" rel="stylesheet">
+
+    {# Icons #}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    {# Font #}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+          rel="stylesheet">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    {# Basic SEO Meta Tags #}
+    <meta name="description" content="{% block meta_description %}Base HTML Template{% endblock %}">
+    <meta name="keywords" content="{% block meta_keywords %}Base,Parent{% endblock %}">
+    <meta name="author" content="Team 14">
+
+    {# Extra Head Content Block #}
+    {% block extra_head %}{% endblock %}
+    <title>{% block title %}NotifySite|Base{% endblock %}</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+</head>
+<body class="bg-white h-full">
+{# Header #}
+<header class="overflow-x-hidden">
+    {% block header %}
+        <header>
+            <h1 class="text-black text-center text-4xl bg-red-200">Base Plate</h1>
+        </header>
+    {% endblock %}
+</header>
+{# Main Content #}
+<main class="overflow-x-hidden">
+    {% block content %} {% endblock %}
+</main>
+{# Footer #}
+<footer class="p-8 bg-gray-200 text-black">
+    {% block footer %}
+        <div class="flex flex-col md:flex-row gap-4 mb-2">
+            <div class="flex-1 p-1">
+                <h1 class="text-lg font-semibold mb-4">Company</h1>
+                <div class="grid grid-cols-2">
+                    <div class="space-y-3 font-light">
+                        <a href="#" class="block max-w-fit hover:underline">About</a>
+                        <a href="#" class="block max-w-fit hover:underline">Community</a>
+                        <a href="#" class="block max-w-fit hover:underline">Blog</a>
+                        <a href="#" class="block max-w-fit hover:underline">Press</a>
+                        <a href="#" class="block max-w-fit hover:underline">Filler</a>
+                    </div>
+                    <div class="space-y-3 font-light">
+                        <a href="#" class="block max-w-fit hover:underline">Terms of Service</a>
+                        <a href="#" class="block max-w-fit hover:underline">Security</a>
+                        <a href="#" class="block max-w-fit hover:underline">Privacy</a>
+                        <a href="#" class="block max-w-fit hover:underline">Safety Information</a>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-1 p-1">
+                <h1 class="text-lg font-semibold mb-4">Support</h1>
+                <div class="grid grid-cols-2">
+                    <div class="space-y-3 font-light">
+                        <a href="#" class="block max-w-fit hover:underline">About</a>
+                        <a href="#" class="block max-w-fit hover:underline">Community</a>
+                        <a href="#" class="block max-w-fit hover:underline">Blog</a>
+                    </div>
+                    <div class="space-y-3 font-light">
+                        <a href="#" class="block max-w-fit hover:underline w-auto">Terms of Service</a>
+                        <a href="#" class="block max-w-fit hover:underline">Security</a>
+                        <a href="#" class="block max-w-fit hover:underline">Privacy</a>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-1 p-1">
+                <h1 class="text-lg font-semibold mb-4">Contact us</h1>
+                <div class="space-y-3 font-light">
+                    <a href="#" class="block max-w-fit hover:underline">
+                        <i class="fab fa-youtube mr-2"></i>YouTube
+                    </a>
+                    <a href="#" class="block max-w-fit hover:underline">
+                        <i class="fab fa-instagram mr-2"></i>Instagram
+                    </a>
+                    <a href="#" class="block max-w-fit hover:underline">
+                        <i class="fab fa-facebook mr-2"></i>Facebook
+                    </a>
+                    <a href="#" class="block max-w-fit hover:underline">
+                        <i class="fab fa-x-twitter mr-2"></i>X
+                    </a>
+                    <a href="#" class="block max-w-fit hover:underline">Notify Support</a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-8 pt-8 border-t border-gray-300 font-light text-center">
+            <p class="text-gray-600">
+                &copy; {% now "Y" %} Notify Copyright. All rights reserved.
+            </p>
+        </div>
+    {% endblock %}
+</footer>
+{# Scripts Block #}
+{% block extra_scripts %}{% endblock %}
+</body>
+</html>
