@@ -1,0 +1,183 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% block title %}View your Notifications | Notify{% endblock %}
+{% block header %}
+    <nav class="bg-white text-gray-500 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                 <a href="{% url 'home' %}">
+                    <img src="{% static 'images/Logo.png' %}" alt="Landing Image"
+                         class="object-cover ml-[2rem] max-w-full h-auto">
+                </a>
+                <a href="{% url 'home' %}" class="text-4xl font-bold relative ml-6">
+                    Notify
+                    <span class="absolute left-2 bottom-[-1px] w-[70%] h-1 bg-blue-400 rounded-lg"></span>
+                </a>
+            </div>
+            <div>
+                <a href="{% url 'live' %}" class="px-3 hover:text-blue-500 transition-colors"><p>Profile</p></a>
+                <a href="{% url 'home' %}" class="px-3 hover:text-blue-500 transition-colors"><p>Logout</p></a>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+{% block content %}
+<!-- Notifications Page Template -->
+<div class="w-full h-full bg-gray-50 dark:bg-gray-200 p-8">
+  <div class="lg:w-[70%] sm:w-[80%] w-[90%] mx-auto flex flex-col gap-4 py-10 border border-gray-300 rounded-lg p-6 shadow-md">
+    <div class="w-full pb-4">
+      <h1 class="text-5xl text-gray-500 font-semibold dark:text-gray-500 mb-2">Notifications</h1>
+      <div class="w-[25%] h-1.5 bg-blue-400 rounded-lg ml-4"></div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-md p-6 dark:bg-white border border-gray-300 mt-4">
+      <ul class="w-full">
+        <!-- Notification Item 1 -->
+        <li class="flex items-center justify-between py-4 border-b dark:border-gray-200 hover:bg-gray-50 transition-colors">
+          <div class="flex items-center gap-4">
+            <div class="text-blue-500 text-3xl">
+              <ion-icon name="alert-circle-outline"></ion-icon>
+            </div>
+            <p class="text-gray-500 text-xl">
+              11/03/25
+            </p>
+          </div>
+          <p class="text-gray-400 text-xl flex-1 ml-6">
+            High temperature warning on Floor 2
+          </p>
+          <p class="text-blue-500 text-xl font-medium">
+            13:01
+          </p>
+        </li>
+
+        <!-- Notification Item 2 -->
+        <li class="flex items-center justify-between py-4 border-b dark:border-gray-200 hover:bg-gray-50 transition-colors">
+          <div class="flex items-center gap-4">
+            <div class="text-blue-500 text-3xl">
+              <ion-icon name="alert-circle-outline"></ion-icon>
+            </div>
+            <p class="text-gray-500 text-xl">
+              08/03/25
+            </p>
+          </div>
+          <p class="text-gray-400 text-xl flex-1 ml-6">
+            Motion detected outside front entrance
+          </p>
+          <p class="text-blue-500 text-xl font-medium">
+            09:10
+          </p>
+        </li>
+
+        <!-- Notification Item 3 -->
+        <li class="flex items-center justify-between py-4 border-b dark:border-gray-200 hover:bg-gray-50 transition-colors">
+          <div class="flex items-center gap-4">
+            <div class="text-blue-500 text-3xl">
+              <ion-icon name="alert-circle-outline"></ion-icon>
+            </div>
+            <p class="text-gray-500 text-xl">
+              08/03/25
+            </p>
+          </div>
+          <p class="text-gray-400 text-xl flex-1 ml-6">
+            Potential fire risk detected on Floor 1
+          </p>
+          <p class="text-blue-500 text-xl font-medium">
+            05:24
+          </p>
+        </li>
+
+        <!-- Notification Item 4 -->
+        <li class="flex items-center justify-between py-4 border-b dark:border-gray-200 hover:bg-gray-50 transition-colors">
+          <div class="flex items-center gap-4">
+            <div class="text-blue-500 text-3xl">
+              <ion-icon name="alert-circle-outline"></ion-icon>
+            </div>
+            <p class="text-gray-500 text-xl">
+              06/03/25
+            </p>
+          </div>
+          <p class="text-gray-400 text-xl flex-1 ml-6">
+            High temperature warning on Floor 3
+          </p>
+          <p class="text-blue-500 text-xl font-medium">
+            13:23
+          </p>
+        </li>
+
+        <!-- Notification Item 5 -->
+        <li class="flex items-center justify-between py-4 border-b dark:border-gray-200 hover:bg-gray-50 transition-colors">
+          <div class="flex items-center gap-4">
+            <div class="text-blue-500 text-3xl">
+              <ion-icon name="alert-circle-outline"></ion-icon>
+            </div>
+            <p class="text-gray-500 text-xl">
+              01/03/25
+            </p>
+          </div>
+          <p class="text-gray-400 text-xl flex-1 ml-6">
+            Motion detected outside back entrance
+          </p>
+          <p class="text-blue-500 text-xl font-medium">
+            19:04
+          </p>
+        </li>
+
+        <!-- Notification Item 6 -->
+        <li class="flex items-center justify-between py-4 border-b dark:border-gray-200 hover:bg-gray-50 transition-colors">
+          <div class="flex items-center gap-4">
+            <div class="text-blue-500 text-3xl">
+              <ion-icon name="alert-circle-outline"></ion-icon>
+            </div>
+            <p class="text-gray-500 text-xl">
+              27/02/25
+            </p>
+          </div>
+          <p class="text-gray-400 text-xl flex-1 ml-6">
+            Motion detected outside back entrance
+          </p>
+          <p class="text-blue-500 text-xl font-medium">
+            22:16
+          </p>
+        </li>
+
+        <!-- Notification Item 7 -->
+        <li class="flex items-center justify-between py-4 border-b dark:border-gray-200 hover:bg-gray-50 transition-colors">
+          <div class="flex items-center gap-4">
+            <div class="text-blue-500 text-3xl">
+              <ion-icon name="alert-circle-outline"></ion-icon>
+            </div>
+            <p class="text-gray-500 text-xl">
+              25/02/25
+            </p>
+          </div>
+          <p class="text-gray-400 text-xl flex-1 ml-6">
+            Potential fire risk detected on Floor 3
+          </p>
+          <p class="text-blue-500 text-xl font-medium">
+            01:56
+          </p>
+        </li>
+
+        <!-- Notification Item 8 -->
+        <li class="flex items-center justify-between py-4 border-b dark:border-gray-200 hover:bg-gray-50 transition-colors">
+          <div class="flex items-center gap-4">
+            <div class="text-blue-500 text-3xl">
+              <ion-icon name="alert-circle-outline"></ion-icon>
+            </div>
+            <p class="text-gray-500 text-xl">
+              20/02/25
+            </p>
+          </div>
+          <p class="text-gray-400 text-xl flex-1 ml-6">
+            High temperature warning on Floor 2
+          </p>
+          <p class="text-blue-500 text-xl font-medium">
+            20:21
+          </p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

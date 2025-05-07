@@ -4,6 +4,15 @@ from django.http import HttpResponse
 from django.views import View
 
 
+import os
+from django.conf import settings
+from django.shortcuts import render
+
+
+import requests
+from django.shortcuts import render
+
+
 class Home(View):
     def get(self, request):
         return render(request, 'home.html')
@@ -20,3 +29,60 @@ def motion_status(request):
 
 def live_page(request):
     return render(request, 'live.html')
+
+
+def notifications_page(request):
+    return render(request, 'Notifications.html')
+
+
+
+
+
+def read_log(request):
+    log_path = os.path.join(settings.BASE_DIR, 'smoke_log.txt')  # or wherever your log is stored
+    log_entries = []
+
+    with open(log_path, 'r') as file:
+        for line in file:
+            if "Smoke Detected!!!" in line:
+                try:
+                    # Example line: Smoke Detected!!! Date: 07_05_2025 and Time: 00_23_05
+                    date_part = line.split("Date:")[1].split("and")[0].strip()
+                    time_part = line.split("Time:")[1].strip()
+                    log_entries.append({
+                        'message': 'Smoke Detected!',
+                        'date': date_part.replace('_', '-'),
+                        'time': time_part.replace('_', ':')
+                    })
+                except (IndexError, ValueError):
+                    continue  # skip malformed lines
+
+    return render(request, 'logs.html', {'logs': log_entries})
+
+
+
+def motion_log_view(request):
+    LOG_URL = 'http://192.168.0.109:8001/motion_status.txt'
+
+    try:
+        resp = requests.get(LOG_URL, timeout=2)
+        resp.raise_for_status()
+        lines = resp.text.splitlines()
+    except requests.RequestException:
+        lines = []
+
+    logs = []
+    for line in lines:
+        if "Motion Detected!!!" in line:
+            try:
+                date = line.split("Date:")[1].split("and")[0].strip().replace('_', '-')
+                time = line.split("Time:")[1].strip().replace('_', ':')
+                logs.append({
+                    'message': 'Motion Detected!',
+                    'date': date,
+                    'time': time
+                })
+            except (IndexError, ValueError):
+                continue
+
+    return render(request, 'motion_logs.html', {'logs': logs})
