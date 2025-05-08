@@ -26,7 +26,7 @@ urlpatterns = [
     path('live', user_views.live_page, name='live'),
     path('notifications/', user_views.notifications_page, name='notifications'),
 
-    path('logs/', user_views.read_log, name='log_view'),
+    path('logs/', user_views.smoke_log, name='log_view'),
     path('motion-logs/', user_views.motion_log_view, name='motion_logs'),
 
 ]

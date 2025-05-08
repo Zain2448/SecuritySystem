@@ -4,6 +4,9 @@ from django.http import HttpResponse
 from django.views import View
 
 
+from django.core.mail import send_mail
+
+
 import os
 from django.conf import settings
 from django.shortcuts import render
@@ -20,7 +23,7 @@ class Home(View):
 
 def motion_status(request):
     try:
-        with open("/home/zain/TeamProject/motion_status.txt", "r") as f:
+        with open("/home/zain/TeamProject/shared_logs/motion_status.txt", "r") as f:
             status = f.read().strip()
         return HttpResponse(f"Motion status: {status}")
     except FileNotFoundError:
@@ -50,7 +53,7 @@ def read_log(request):
                     date_part = line.split("Date:")[1].split("and")[0].strip()
                     time_part = line.split("Time:")[1].strip()
                     log_entries.append({
-                        'message': 'Smoke Detected!',
+                        'message': 'Smoke Detected!!!',
                         'date': date_part.replace('_', '-'),
                         'time': time_part.replace('_', ':')
                     })
@@ -61,8 +64,17 @@ def read_log(request):
 
 
 
+
+
+
+
+
+
+
+
+
 def motion_log_view(request):
-    LOG_URL = 'http://192.168.0.109:8001/motion_status.txt'
+    LOG_URL = 'http://192.168.123.153:8001/motion_status.txt'
 
     try:
         resp = requests.get(LOG_URL, timeout=2)
@@ -73,12 +85,12 @@ def motion_log_view(request):
 
     logs = []
     for line in lines:
-        if "Motion Detected!!!" in line:
+        if "Intruder!!!" in line:
             try:
                 date = line.split("Date:")[1].split("and")[0].strip().replace('_', '-')
                 time = line.split("Time:")[1].strip().replace('_', ':')
                 logs.append({
-                    'message': 'Motion Detected!',
+                    'message': 'Motion Detected!!!',
                     'date': date,
                     'time': time
                 })
@@ -86,3 +98,73 @@ def motion_log_view(request):
                 continue
 
     return render(request, 'motion_logs.html', {'logs': logs})
+
+
+
+def smoke_log(request):
+    LOG_URL = 'http://192.168.123.153:8001/smoke_status.txt'
+
+    try:
+        resp = requests.get(LOG_URL, timeout=2)
+        resp.raise_for_status()
+        lines = resp.text.splitlines()
+    except requests.RequestException:
+        lines = []
+
+    logs = []
+    for line in lines:
+        if "Intruder!!!" in line:
+            try:
+                date = line.split("Date:")[1].split("and")[0].strip().replace('_', '-')
+                time = line.split("Time:")[1].strip().replace('_', ':')
+                logs.append({
+                    'message': 'Motion Detected!!!',
+                    'date': date,
+                    'time': time
+                })
+            except (IndexError, ValueError):
+                continue
+
+    return render(request, 'motion_logs.html', {'logs': logs})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def send_email_to(email):
+    subject = 'Order confirmation'
+    message = 'Thanks for placing a Pizza Order Using My Website! Your Food will arrive shortly'
+    from_email = 'setting.EMAIL_HOST'
+    to_email = email
+
+    send_mail(
+        subject,
+        message,
+        from_email,
+        [to_email],
+        fail_silently=False)
